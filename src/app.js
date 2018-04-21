@@ -9,7 +9,7 @@ import InsertImage from './InsertImage';
 ClassicEditor
   .create(document.querySelector('#editor'), {
     plugins: [Essentials, Paragraph, Bold, Italic, Image, InsertImage],
-    toolbar: ['bold', 'italic']
+    toolbar: ['bold', 'italic','insertImage']
   })
   .then(editor => {
     console.log('Editor was initialized', editor);

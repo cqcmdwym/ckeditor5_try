@@ -5,10 +5,11 @@ import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import Image from '@ckeditor/ckeditor5-image/src/image';
 import InsertImage from './InsertImage';
+import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
 
 ClassicEditor
   .create(document.querySelector('#editor'), {
-    plugins: [Essentials, Paragraph, Bold, Italic, Image, InsertImage],
+    plugins: [Essentials, Paragraph, Bold, Italic, Image, InsertImage, ImageCaption],
     toolbar: ['bold', 'italic','insertImage']
   })
   .then(editor => {

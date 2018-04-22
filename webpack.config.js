@@ -1,5 +1,6 @@
 const path = require('path');
 const { styles } = require('@ckeditor/ckeditor5-dev-utils');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   // https://webpack.js.org/configuration/entry-context/
@@ -10,6 +11,10 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
+
+  plugins: [
+    new ExtractTextPlugin('styles.css')
+  ],
 
   module: {
     rules: [
@@ -40,34 +45,34 @@ module.exports = {
           },
         ]
       },
-      {
-        // Or /ckeditor5-[^/]+\/theme\/[^/]+\.css$/ if you want to limit this loader
-        // to CKEditor 5's theme only.
-        test: /\.scss$/,
-        use: [
-          {
-            loader: 'style-loader',
-            options: {
-              singleton: true
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: styles.getPostCssConfig({
-              themeImporter: {
-                themePath: require.resolve('@ckeditor/ckeditor5-theme-lark')
-              },
-              minify: true
-            })
-          },
-          {
-            loader: 'sass-loader',
-            // options: {
-            //   sourceMap: true
-            // }
-          },
-        ]
-      }
+      // {
+      //   // Or /ckeditor5-[^/]+\/theme\/[^/]+\.css$/ if you want to limit this loader
+      //   // to CKEditor 5's theme only.
+      //   test: /\.scss$/,
+      //   use: [
+      //     {
+      //       loader: 'style-loader',
+      //       options: {
+      //         singleton: true
+      //       }
+      //     },
+      //     {
+      //       loader: 'postcss-loader',
+      //       options: styles.getPostCssConfig({
+      //         themeImporter: {
+      //           themePath: require.resolve('@ckeditor/ckeditor5-theme-lark')
+      //         },
+      //         minify: true
+      //       })
+      //     },
+      //     {
+      //       loader: 'sass-loader',
+      //       // options: {
+      //       //   sourceMap: true
+      //       // }
+      //     },
+      //   ]
+      // }
     ]
   },
 
